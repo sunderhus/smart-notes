@@ -9,8 +9,6 @@ type NewNoteCardProps = {
   transcribeRecording: TranscribeRecording;
 };
 
-// let speechRecognition: SpeechRecognition | null;
-
 export function NewNoteCard({
   onNoteCreated,
   transcribeRecording,
@@ -62,18 +60,16 @@ export function NewNoteCard({
       return;
     }
     onNoteCreated(content);
-    toast.success("Nota criada com sucesso");
+    toast.success("Note created");
     resetContent();
   };
 
   return (
     <Dialog.Root>
       <Dialog.Trigger className="rounded-md bg-slate-700 p-5 gap-3 flex flex-col outline-none text-left hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400">
-        <span className="text-sm font-medium text-slate-300">
-          Adicionar nota
-        </span>
+        <span className="text-sm font-medium text-slate-300">Add note</span>
         <p className="text-sm leading-6 text-slate-400">
-          Comece gravando uma nota em áudio ou utiliza apenas texto
+          Start recording using your voice or typing
         </p>
       </Dialog.Trigger>
 
@@ -87,26 +83,26 @@ export function NewNoteCard({
           <form onSubmit={handleSaveNote} className="flex flex-1 flex-col">
             <div className="flex flex-1 flex-col gap-3 p-5 ">
               <span className="text-sm font-medium text-slate-300">
-                Adicionar nota
+                Add new note
               </span>
 
               {shouldShowOnboarding ? (
                 <p className="text-sm leading-6 text-slate-400">
-                  Comece{" "}
+                  Start{" "}
                   <button
                     type="button"
                     onClick={handleStartRecording}
                     className="font-medium text-lime-400 hover:underline"
                   >
-                    gravando uma nota em áudio
+                    recording a audio note
                   </button>{" "}
-                  ou{" "}
+                  or{" "}
                   <button
                     type="button"
                     onClick={handleStartEditor}
                     className="font-medium text-lime-400 hover:underline"
                   >
-                    utilize apenas texto
+                    write the note
                   </button>
                 </p>
               ) : (
@@ -126,7 +122,7 @@ export function NewNoteCard({
                 className="w-full flex items-center gap-2 justify-center bg-slate-900 py-4 text-center text-sm font-medium text-slate-300 outline-none hover:text-slate-100"
               >
                 <div className="size-3 rounded-full bg-red-500 animate-pulse" />{" "}
-                Gravando! (Clique para interromper)
+                Recording! (click to stop)
               </button>
             ) : (
               <button
@@ -134,7 +130,7 @@ export function NewNoteCard({
                 disabled={shouldDisableSaveButton}
                 className="w-full bg-lime-400 py-4 text-center text-sm font-medium text-lime-950 outline-none hover:bg-lime-500 disabled:bg-slate-500 disabled:cursor-not-allowed"
               >
-                Salvar nota
+                Save note
               </button>
             )}
           </form>

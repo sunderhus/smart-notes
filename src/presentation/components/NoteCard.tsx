@@ -31,9 +31,15 @@ export function NoteCard({ note, onNoteDeleted }: NoteCardProps) {
         type="button"
         className="flex flex-col rounded-md text-left bg-slate-800 p-5 gap-3 overflow-hidden relative outline-none hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400"
       >
-        <span className="text-sm font-medium text-slate-300">
-          {formattedDate}
-        </span>
+        <div className="flex justify-between w-full">
+          <span className="text-sm font-medium text-slate-300">
+            {formattedDate}
+          </span>
+          <X
+            onClick={handleDeleteNote}
+            className="size-5 hover:bg-red-500 transition-colors rounded-sm"
+          />
+        </div>
         <p className="text-sm leading-6 text-slate-400">{note.content}</p>
 
         <div className="absolute bottom-0 right-0 left-0 h-1/2 bg-gradient-to-t from-black/60 to-black/0 pointer-events-none"></div>
@@ -57,9 +63,9 @@ export function NoteCard({ note, onNoteDeleted }: NoteCardProps) {
             onClick={handleDeleteNote}
             className="w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none group/deleteButton"
           >
-            Deseja{" "}
+            Want to{" "}
             <span className="text-red-400 group-hover/deleteButton:underline">
-              apagar esta nota
+              erase this note
             </span>
             ?
           </button>
