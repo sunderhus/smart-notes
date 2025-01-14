@@ -1,3 +1,5 @@
+import { CacheKey } from "./CacheKeys";
+
 export interface SaveCacheProtocol {
-  save<T = unknown>(key: string, content: T): void;
+  save<T = unknown>(key: CacheKey, content: T): void;
 }

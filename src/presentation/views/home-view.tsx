@@ -6,15 +6,18 @@ import { SaveNotes } from "@/domain/use-cases/SaveNotes";
 import { Note } from "@/domain/models/Note";
 import { LoadNotes } from "@/domain/use-cases/LoadNotes";
 import { TranscribeRecording } from "@/domain/use-cases/TranscribeRecording";
+import { DeleteNote } from "@/domain/use-cases/DeleteNote";
 
 interface HomeViewProps {
   saveNotes: SaveNotes;
+  deleteNote: DeleteNote;
   loadNotes: LoadNotes;
   transcribeRecording: TranscribeRecording;
 }
 
 export function HomeView({
   saveNotes,
+  deleteNote,
   loadNotes,
   transcribeRecording,
 }: HomeViewProps) {
@@ -59,10 +62,10 @@ export function HomeView({
   };
 
   const onNoteDeleted = (id: string) => {
-    const result = notes.filter((note) => note.id !== id);
-
-    setNotes(result);
-    saveNotes.save(result);
+    deleteNote.delete(id);
+    const results = loadNotes.load();
+    setNotes(results);
+    saveNotes.save(results);
   };
 
   return (

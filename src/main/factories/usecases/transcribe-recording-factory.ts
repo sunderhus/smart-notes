@@ -3,7 +3,7 @@ import { makeSpeechRecognitionSyntheticTranscribeAdapter } from "@/main/factorie
 
 export const makeTranscribeRecording = (): SyntheticTranscribeRecording => {
   return new SyntheticTranscribeRecording(
-    "pt-BR",
+    "en-US",
     makeSpeechRecognitionSyntheticTranscribeAdapter()
   );
 };
