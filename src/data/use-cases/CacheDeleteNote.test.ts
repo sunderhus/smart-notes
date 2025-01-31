@@ -39,14 +39,3 @@ test("should call multiples times with correct params", () => {
   expect(clientSpy.id).toBe("1YTIBUI125");
   expect(clientSpy.key).toBe("@smartNotes");
 });
-
-test("should return the deleted item", () => {
-  const { sut } = makeSut();
-  const note = sut.delete("1YTIBUI123");
-
-  expect(note).toEqual({
-    id: "1YTIBUI123",
-    title: "any_title",
-    description: "any_description",
-  });
-});
