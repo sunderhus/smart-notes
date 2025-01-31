@@ -1,7 +1,6 @@
 import { DeleteNote } from "@/domain/use-cases/DeleteNote";
 import { DeleteCacheProtocol } from "../protocols/cache/DeleteCacheProtocol";
 import { CacheKey } from "../protocols/cache/CacheKeys";
-import { Note } from "@/domain/models/Note";
 
 export class CacheDeleteNote implements DeleteNote {
   constructor(
@@ -10,6 +9,6 @@ export class CacheDeleteNote implements DeleteNote {
   ) {}
 
   delete(id: string): void {
-    this.client.delete<Note>(this.key, id);
+    this.client.delete(this.key, id);
   }
 }

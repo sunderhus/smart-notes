@@ -3,7 +3,7 @@ import { DeleteCacheProtocol } from "@/data/protocols/cache/DeleteCacheProtocol"
 export class LocalStorageDeleteCacheProtocolAdapter
   implements DeleteCacheProtocol
 {
-  delete<T extends { id: string }>(key: string, id: string): T {
+  delete<T extends { id: string }>(key: string, id: string): void {
     const cache = localStorage.getItem(key);
     const parsedCache = this.adapt<T>(cache);
     let deletedItem: T | undefined;
@@ -22,7 +22,7 @@ export class LocalStorageDeleteCacheProtocolAdapter
       throw new Error("Item not found");
     }
 
-    return deletedItem;
+    return;
   }
 
   private adapt<T = { id: string }>(cache: string | null): Array<T> {
